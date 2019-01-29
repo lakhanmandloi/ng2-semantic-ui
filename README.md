@@ -40,8 +40,8 @@ See the [Documentation](https://edcarroll.github.io/ng2-semantic-ui) for install
 
 ## Dependencies
 
-* [Angular](https://angular.io) (^4.3.1)
-* [Semantic UI CSS](http://semantic-ui.com/) (^2.2.13) (jQuery is **not** required)
+* [Angular](https://angular.io) (^6.0.0)
+* [Semantic UI CSS](http://semantic-ui.com/) (^2.3.1) (jQuery is **not** required)
 
 ## Component Support
 
@@ -82,13 +82,13 @@ Want to file a bug, contribute some code, or improve documentation? Great! Pleas
 To generate all library files:
 
 ```bash
-$ npm run compile:lib
-# use compile:lib:w to watch for changes
+$ npm run lib:compile
+# use lib:compile:w to watch for changes
 ```
 
-To run the demo app (you must have [Angular-CLI](https://github.com/angular/angular-cli) installed):
+To run the demo app:
 ```bash
-$ ng serve
+$ npm run demo:serve
 ```
 
 ## Testing
@@ -97,18 +97,6 @@ To run the unit tests suite:
 ```bash
 $ npm run test
 ```
-
-To run the unit test suit in watch mode (the whole suite is re-executed every code/test change):
-```bash
-$ npm run test:w
-```
-
-To generate code coverage report:
-```bash
-$ npm run test:cov
-```
-this will generate a folder `coverage` with the HTML report
-
 
 ## License
 

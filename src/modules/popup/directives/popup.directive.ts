@@ -1,7 +1,7 @@
 import { Directive, Input, ElementRef, TemplateRef, Renderer2 } from "@angular/core";
-import { ITemplateRefContext, Util, PositioningPlacement, SuiComponentFactory } from "../../../misc/util/index";
+import { ITemplateRefContext, Util, PositioningPlacement, SuiComponentFactory } from "../../../misc/util/internal";
 import { SuiPopup } from "../components/popup";
-import { PopupConfig, PopupTrigger } from "../classes/popup-config";
+import { PopupConfig, PopupTrigger, PopupSize, PopupWidth } from "../classes/popup-config";
 import { SuiPopupConfig } from "../services/popup.service";
 import { SuiPopupController } from "../classes/popup-controller";
 import { SuiPopupTemplateController, ITemplatePopupContext, ITemplatePopupConfig } from "../classes/popup-template-controller";
@@ -34,6 +34,16 @@ export class SuiPopupDirective<T> extends SuiPopupTemplateController<T> {
     }
 
     @Input()
+    public set popupInline(inline:boolean) {
+        this.popup.config.isInline = Util.DOM.parseBooleanAttribute(inline);
+    }
+
+    @Input()
+    public set popupFlowing(flowing:boolean) {
+        this.popup.config.isFlowing = Util.DOM.parseBooleanAttribute(flowing);
+    }
+
+    @Input()
     public set popupTransition(transition:string) {
         this.popup.config.transition = transition;
     }
@@ -46,6 +56,16 @@ export class SuiPopupDirective<T> extends SuiPopupTemplateController<T> {
     @Input()
     public set popupPlacement(placement:PositioningPlacement) {
         this.popup.config.placement = placement;
+    }
+
+    @Input()
+    public set popupWidth(width:PopupWidth) {
+        this.popup.config.width = width;
+    }
+
+    @Input()
+    public set popupSize(size:PopupSize) {
+        this.popup.config.size = size;
     }
 
     @Input()

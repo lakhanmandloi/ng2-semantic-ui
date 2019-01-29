@@ -1,6 +1,6 @@
 import { Component, ViewChild, ViewContainerRef, ElementRef, EventEmitter, HostListener, HostBinding } from "@angular/core";
-import { PositioningService, IDynamicClasses } from "../../../misc/util/index";
-import { TransitionController, TransitionDirection, Transition } from "../../transition/index";
+import { PositioningService, IDynamicClasses } from "../../../misc/util/internal";
+import { TransitionController, TransitionDirection, Transition } from "../../transition/internal";
 import { IPopup } from "../classes/popup-controller";
 import { TemplatePopupConfig } from "../classes/popup-template-controller";
 
@@ -20,7 +20,7 @@ import { TemplatePopupConfig } from "../classes/popup-template-controller";
     <div #templateSibling></div>
 
     <sui-popup-arrow *ngIf="!config.isBasic"
-                     [placement]="positioningService.actualPlacement"
+                     [placement]="config.placement"
                      [inverted]="config.isInverted"></sui-popup-arrow>
 </div>
 `,
@@ -28,6 +28,7 @@ import { TemplatePopupConfig } from "../classes/popup-template-controller";
 .ui.popup {
     /* Autofit popup to the contents. */
     right: auto;
+    margin: 0;
 }
 
 .ui.animating.popup {
@@ -63,6 +64,7 @@ export class SuiPopup implements IPopup {
 
     public transitionController:TransitionController;
     public positioningService:PositioningService;
+    private _anchor:ElementRef;
 
     // Keeps track of whether the popup is open internally.
     private _isOpen:boolean;
@@ -83,22 +85,18 @@ export class SuiPopup implements IPopup {
     private _container:ViewContainerRef;
 
     public set anchor(anchor:ElementRef) {
-        // Whenever the anchor is set (which is when the popup is created), recreate the positioning service with the appropriate options.
-        this.positioningService = new PositioningService(anchor, this._container.element, this.config.placement, ".dynamic.arrow");
+        this._anchor = anchor;
     }
 
     // Returns the direction (`top`, `left`, `right`, `bottom`) of the current placement.
     public get direction():string | undefined {
-        if (this.positioningService) {
-            return this.positioningService.actualPlacement.split(" ").shift();
-        }
+        // We need to set direction attribute before popper init to allow correct positioning
+        return this.config.placement.split(" ").shift();
     }
 
     // Returns the alignment (`top`, `left`, `right`, `bottom`) of the current placement.
     public get alignment():string | undefined {
-        if (this.positioningService) {
-            return this.positioningService.actualPlacement.split(" ").pop();
-        }
+        return this.config.placement.split(" ").pop();
     }
 
     public get dynamicClasses():IDynamicClasses {
@@ -115,6 +113,15 @@ export class SuiPopup implements IPopup {
         if (this.config.isBasic) {
             classes.basic = true;
         }
+        if (this.config.isFlowing) {
+            classes.flowing = true;
+        }
+        if (this.config.size) {
+            classes[this.config.size] = true;
+        }
+        if (this.config.width) {
+            classes[this.config.width] = true;
+        }
         return classes;
     }
 
@@ -123,7 +130,7 @@ export class SuiPopup implements IPopup {
     public templateSibling:ViewContainerRef;
 
     @HostBinding("attr.tabindex")
-    private _tabindex:number;
+    public readonly tabindex:number;
 
     constructor(public elementRef:ElementRef) {
         this.transitionController = new TransitionController(false);
@@ -133,7 +140,7 @@ export class SuiPopup implements IPopup {
         this.onOpen = new EventEmitter<void>();
         this.onClose = new EventEmitter<void>();
 
-        this._tabindex = 0;
+        this.tabindex = 0;
     }
 
     public open():void {
@@ -141,6 +148,17 @@ export class SuiPopup implements IPopup {
         if (!this.isOpen) {
             // Cancel the closing timer.
             clearTimeout(this.closingTimeout);
+
+            // Create positioning service after a brief delay.
+            setTimeout(() => {
+                this.positioningService = new PositioningService(
+                    this._anchor,
+                    this._container.element,
+                    this.config.placement,
+                    ".dynamic.arrow"
+                );
+                this.positioningService.hasArrow = !this.config.isBasic;
+            });
 
             // Cancel all other transitions, and initiate the opening transition.
             this.transitionController.stopAll();
@@ -155,10 +173,6 @@ export class SuiPopup implements IPopup {
                         setTimeout(() => autoFocus.focus(), this.config.transitionDuration);
                     }
                 }));
-
-            // Refresh the popup position after a brief delay to allow for browser processing time.
-            this.positioningService.placement = this.config.placement;
-            setTimeout(() => this.positioningService.update());
 
             // Finally, set the popup to be open.
             this._isOpen = true;
