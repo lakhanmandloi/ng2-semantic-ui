@@ -1,5 +1,5 @@
 import { ElementRef, Type, Renderer2 } from "@angular/core";
-import { SuiComponentFactory } from "../../../misc/util/index";
+import { SuiComponentFactory } from "../../../misc/util/internal";
 import { SuiPopupController } from "./popup-controller";
 import { PopupConfig } from "./popup-config";
 export declare class SuiPopupComponentController<T> extends SuiPopupController {

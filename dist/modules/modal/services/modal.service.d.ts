@@ -1,4 +1,4 @@
-import { SuiComponentFactory } from "../../../misc/util/index";
+import { SuiComponentFactory } from "../../../misc/util/internal";
 import { ModalConfig } from "../classes/modal-config";
 import { ActiveModal } from "../classes/active-modal";
 export declare class SuiModalService {

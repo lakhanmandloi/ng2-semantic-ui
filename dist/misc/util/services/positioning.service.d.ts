@@ -30,10 +30,15 @@ export declare class PositioningService {
     private _popper;
     private _popperState;
     private _placement;
+    private _hasArrow;
+    private _arrowSelector;
     placement: PositioningPlacement;
+    hasArrow: boolean;
     readonly actualPlacement: PositioningPlacement;
     readonly state: Data;
     constructor(anchor: ElementRef, subject: ElementRef, placement: PositioningPlacement, arrowSelector?: string);
+    init(): void;
     update(): void;
     destroy(): void;
+    private calculateOffsets();
 }

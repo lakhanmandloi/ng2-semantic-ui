@@ -2,8 +2,10 @@ import { ElementRef, Renderer2 } from "@angular/core";
 export declare class SuiCollapse {
     private _element;
     private _renderer;
+    readonly isExpanded: boolean;
     private _isExpanded;
-    private readonly _isCollapsed;
+    readonly isCollapsed: boolean;
+    readonly isCollapsing: boolean;
     private _isCollapsing;
     private _pristine;
     suiCollapse: boolean;

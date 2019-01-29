@@ -1,4 +1,4 @@
-import { IDatepickerLocaleValues } from "../../../behaviors/localization/index";
+import { IDatepickerLocaleValues } from "../../../behaviors/localization/internal";
 export declare class DateFnsParser {
     private _weekStartsOn;
     private _locale;

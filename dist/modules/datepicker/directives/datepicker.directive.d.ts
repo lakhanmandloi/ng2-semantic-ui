@@ -1,12 +1,11 @@
 import { ElementRef, Renderer2, EventEmitter, OnChanges, SimpleChanges } from "@angular/core";
 import { AbstractControl, ValidationErrors } from "@angular/forms";
-import { ICustomValueAccessorHost, CustomValueAccessor, ICustomValidatorHost, CustomValidator, PositioningPlacement, SuiComponentFactory } from "../../../misc/util/index";
-import { IDatepickerLocaleValues, RecursivePartial, SuiLocalizationService } from "../../../behaviors/localization/index";
-import { SuiPopupComponentController, PopupAfterOpen } from "../../popup/index";
+import { ICustomValueAccessorHost, CustomValueAccessor, ICustomValidatorHost, CustomValidator, PositioningPlacement, SuiComponentFactory } from "../../../misc/util/internal";
+import { IDatepickerLocaleValues, RecursivePartial, SuiLocalizationService } from "../../../behaviors/localization/internal";
+import { SuiPopupComponentController, PopupAfterOpen } from "../../popup/internal";
 import { SuiDatepicker, DatepickerMode } from "../components/datepicker";
 import { CalendarConfig } from "../classes/calendar-config";
 export declare class SuiDatepickerDirective extends SuiPopupComponentController<SuiDatepicker> implements ICustomValueAccessorHost<Date>, ICustomValidatorHost, OnChanges, PopupAfterOpen {
-    renderer: Renderer2;
     localizationService: SuiLocalizationService;
     private _selectedDate?;
     selectedDate: Date | undefined;

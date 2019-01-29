@@ -1,6 +1,6 @@
 import { EventEmitter } from "@angular/core";
 export declare class SuiTabHeader {
-    private _headerClasses;
+    readonly hasClasses: boolean;
     id: string;
     private _isActive;
     isActiveChange: EventEmitter<boolean>;
@@ -12,5 +12,5 @@ export declare class SuiTabHeader {
     isDisabled: boolean;
     constructor();
     setActiveState(active: boolean): void;
-    private onClick();
+    onClick(): void;
 }

@@ -1,4 +1,4 @@
-import { DatePrecision } from "../../../misc/util/index";
+import { DatePrecision } from "../../../misc/util/internal";
 export declare class DateComparer {
     private _precision;
     private _isSmallest;

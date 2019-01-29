@@ -1,6 +1,6 @@
-import { EventEmitter, ElementRef, Renderer2 } from "@angular/core";
-import { ICustomValueAccessorHost, CustomValueAccessor } from "../../../misc/util/index";
-import { SuiLocalizationService } from "../../../behaviors/localization/index";
+import { EventEmitter, ElementRef } from "@angular/core";
+import { ICustomValueAccessorHost, CustomValueAccessor } from "../../../misc/util/internal";
+import { SuiLocalizationService } from "../../../behaviors/localization/internal";
 import { SuiSelectBase } from "../classes/select-base";
 import { SuiSelectOption } from "./select-option";
 export declare class SuiSelect<T, U> extends SuiSelectBase<T, U> implements ICustomValueAccessorHost<U> {
@@ -10,7 +10,7 @@ export declare class SuiSelect<T, U> extends SuiSelectBase<T, U> implements ICus
     selectedOptionChange: EventEmitter<U>;
     private _placeholder;
     placeholder: string;
-    constructor(element: ElementRef, renderer: Renderer2, localizationService: SuiLocalizationService);
+    constructor(element: ElementRef, localizationService: SuiLocalizationService);
     protected optionsUpdateHook(): void;
     protected queryUpdateHook(): void;
     selectOption(option: T): void;

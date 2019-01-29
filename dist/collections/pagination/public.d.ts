@@ -1,1 +1,1 @@
-export { SuiPaginationModule } from "./index";
+export { SuiPaginationModule } from "./internal";

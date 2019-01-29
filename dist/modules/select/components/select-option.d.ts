@@ -1,9 +1,9 @@
 import { EventEmitter, ViewContainerRef, Renderer2, ElementRef, ChangeDetectorRef } from "@angular/core";
-import { SuiDropdownMenuItem } from "../../dropdown/index";
-import { HandledEvent } from "../../../misc/util/index";
+import { SuiDropdownMenuItem } from "../../dropdown/internal";
+import { HandledEvent } from "../../../misc/util/internal";
 export declare class SuiSelectOption<T> extends SuiDropdownMenuItem {
     changeDetector: ChangeDetectorRef;
-    private _optionClasses;
+    readonly hasClasses: boolean;
     value: T;
     onSelected: EventEmitter<T>;
     isActive: boolean;

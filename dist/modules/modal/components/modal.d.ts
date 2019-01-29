@@ -1,6 +1,6 @@
 import { OnInit, ElementRef, Renderer2, EventEmitter, ViewContainerRef, AfterViewInit } from "@angular/core";
-import { IDynamicClasses, SuiComponentFactory } from "../../../misc/util/index";
-import { TransitionController } from "../../transition/index";
+import { IDynamicClasses, SuiComponentFactory } from "../../../misc/util/internal";
+import { TransitionController } from "../../transition/internal";
 import { ModalControls, ModalResult } from "../classes/modal-controls";
 import { ModalConfig, ModalSize } from "../classes/modal-config";
 export declare class SuiModal<T, U> implements OnInit, AfterViewInit {
@@ -17,6 +17,7 @@ export declare class SuiModal<T, U> implements OnInit, AfterViewInit {
     onDismiss: EventEmitter<void>;
     private _modalElement;
     size: ModalSize;
+    isCentered: boolean;
     private _isFullScreen;
     isFullScreen: boolean;
     isBasic: boolean;

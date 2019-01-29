@@ -1,7 +1,7 @@
 import { EventEmitter } from "@angular/core";
-import { ICustomValueAccessorHost, CustomValueAccessor } from "../../../misc/util/index";
+import { ICustomValueAccessorHost, CustomValueAccessor } from "../../../misc/util/internal";
 export declare class SuiRating implements ICustomValueAccessorHost<number> {
-    private _ratingClasses;
+    readonly hasClasses: boolean;
     value: number;
     valueChange: EventEmitter<number>;
     private _maximum;

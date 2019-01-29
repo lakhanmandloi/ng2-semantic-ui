@@ -1,5 +1,5 @@
 import { DatepickerMode } from "../components/datepicker";
-import { IDatepickerLocaleValues } from "../../../behaviors/localization/index";
+import { IDatepickerLocaleValues } from "../../../behaviors/localization/internal";
 export declare class DateParser {
     private _format;
     private _parser;

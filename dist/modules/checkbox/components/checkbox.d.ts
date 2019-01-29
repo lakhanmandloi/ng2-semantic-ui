@@ -1,7 +1,7 @@
 import { EventEmitter } from "@angular/core";
-import { ICustomValueAccessorHost, CustomValueAccessor } from "../../../misc/util/index";
+import { ICustomValueAccessorHost, CustomValueAccessor } from "../../../misc/util/internal";
 export declare class SuiCheckbox implements ICustomValueAccessorHost<boolean> {
-    private _checkboxClasses;
+    readonly hasClasses: boolean;
     name: string;
     isChecked: boolean;
     onCheckChange: EventEmitter<boolean>;

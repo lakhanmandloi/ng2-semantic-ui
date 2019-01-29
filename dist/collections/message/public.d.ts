@@ -1,1 +1,1 @@
-export { SuiMessageModule, IMessage } from "./index";
+export { SuiMessageModule, IMessage } from "./internal";

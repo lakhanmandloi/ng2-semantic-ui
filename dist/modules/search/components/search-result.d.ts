@@ -1,9 +1,9 @@
 import { ViewContainerRef, TemplateRef } from "@angular/core";
-import { SuiComponentFactory } from "../../../misc/util/index";
+import { SuiComponentFactory } from "../../../misc/util/internal";
 import { IResultContext } from "./search";
 export declare class SuiSearchResult<T> {
     componentFactory: SuiComponentFactory;
-    private _optionClasses;
+    readonly hasClasses: boolean;
     value: T;
     query: string;
     formatter: (obj: T, query: string) => string;

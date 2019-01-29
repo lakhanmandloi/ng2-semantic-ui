@@ -1,6 +1,6 @@
-import { ElementRef, EventEmitter, Renderer2 } from "@angular/core";
-import { ICustomValueAccessorHost, CustomValueAccessor } from "../../../misc/util/index";
-import { SuiLocalizationService } from "../../../behaviors/localization/index";
+import { ElementRef, EventEmitter } from "@angular/core";
+import { ICustomValueAccessorHost, CustomValueAccessor } from "../../../misc/util/internal";
+import { SuiLocalizationService } from "../../../behaviors/localization/internal";
 import { SuiSelectBase } from "../classes/select-base";
 import { SuiSelectOption } from "./select-option";
 export declare class SuiMultiSelect<T, U> extends SuiSelectBase<T, U> implements ICustomValueAccessorHost<U[]> {
@@ -21,8 +21,8 @@ export declare class SuiMultiSelect<T, U> extends SuiSelectBase<T, U> implements
     readonly maxSelectedReached: boolean;
     readonly maxSelectedMessage: string;
     readonly selectedMessage: string;
-    private _multiSelectClasses;
-    constructor(element: ElementRef, renderer: Renderer2, localizationService: SuiLocalizationService);
+    readonly hasClasses: boolean;
+    constructor(element: ElementRef, localizationService: SuiLocalizationService);
     protected optionsUpdateHook(): void;
     protected initialiseRenderedOption(option: SuiSelectOption<T>): void;
     selectOption(option: T): void;

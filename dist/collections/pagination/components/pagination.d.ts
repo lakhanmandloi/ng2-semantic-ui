@@ -1,6 +1,6 @@
 import { OnChanges, EventEmitter } from "@angular/core";
 export declare class SuiPagination implements OnChanges {
-    private _paginationClasses;
+    readonly hasClasses: boolean;
     pageCount: number;
     pageChange: EventEmitter<number>;
     private _maxSize?;

@@ -1,5 +1,5 @@
 export declare class SuiProgress {
-    private _popupClasses;
+    readonly hasClasses: boolean;
     private _value;
     private _maximum;
     private _precision;
@@ -9,7 +9,7 @@ export declare class SuiProgress {
     value: number;
     maximum: number;
     precision: number;
-    private readonly _reachedMaximum;
+    readonly reachedMaximum: boolean;
     readonly percentage: string;
     classValue: string;
     constructor();

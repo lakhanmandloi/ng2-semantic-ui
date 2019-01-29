@@ -1,6 +1,6 @@
 import { ElementRef, TemplateRef, Renderer2 } from "@angular/core";
-import { PositioningPlacement, SuiComponentFactory } from "../../../misc/util/index";
-import { PopupTrigger } from "../classes/popup-config";
+import { PositioningPlacement, SuiComponentFactory } from "../../../misc/util/internal";
+import { PopupTrigger, PopupSize, PopupWidth } from "../classes/popup-config";
 import { SuiPopupConfig } from "../services/popup.service";
 import { SuiPopupTemplateController, ITemplatePopupContext, ITemplatePopupConfig } from "../classes/popup-template-controller";
 export declare class SuiPopupDirective<T> extends SuiPopupTemplateController<T> {
@@ -8,9 +8,13 @@ export declare class SuiPopupDirective<T> extends SuiPopupTemplateController<T> 
     popupText: string;
     popupInverted: boolean;
     popupBasic: boolean;
+    popupInline: boolean;
+    popupFlowing: boolean;
     popupTransition: string;
     popupTransitionDuration: number;
     popupPlacement: PositioningPlacement;
+    popupWidth: PopupWidth;
+    popupSize: PopupSize;
     popupDelay: number;
     popupTrigger: PopupTrigger;
     popupTemplate: TemplateRef<ITemplatePopupContext<T>> | undefined;

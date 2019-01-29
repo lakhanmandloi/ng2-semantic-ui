@@ -1,1 +1,1 @@
-export { SuiSelectModule, IOptionContext } from "./index";
+export { SuiSelectModule, IOptionContext } from "./internal";

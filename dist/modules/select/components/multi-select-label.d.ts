@@ -1,10 +1,10 @@
 import { EventEmitter, ViewContainerRef, Renderer2, ElementRef, ChangeDetectorRef, TemplateRef } from "@angular/core";
-import { SuiTransition } from "../../transition/index";
-import { HandledEvent, SuiComponentFactory } from "../../../misc/util/index";
+import { SuiTransition } from "../../transition/internal";
+import { HandledEvent, SuiComponentFactory } from "../../../misc/util/internal";
 import { IOptionContext } from "../classes/select-base";
 export declare class SuiMultiSelectLabel<T> extends SuiTransition {
     componentFactory: SuiComponentFactory;
-    private _labelClasses;
+    readonly hasClasses: boolean;
     private _transitionController;
     value: T;
     query?: string;

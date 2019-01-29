@@ -1,7 +1,7 @@
 import { EventEmitter } from "@angular/core";
-import { ICustomValueAccessorHost, CustomValueAccessor } from "../../../misc/util/index";
+import { ICustomValueAccessorHost, CustomValueAccessor } from "../../../misc/util/internal";
 export declare class SuiRadio<T> implements ICustomValueAccessorHost<T> {
-    private _radioClasses;
+    readonly hasClasses: boolean;
     name: string;
     value: T;
     isChecked: boolean;

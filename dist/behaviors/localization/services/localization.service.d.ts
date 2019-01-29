@@ -1,5 +1,5 @@
 import { EventEmitter } from "@angular/core";
-import { ILocaleValues, IPartialLocaleValues, RecursivePartial } from "../interfaces/values";
+import { ILocaleValues, IPartialLocaleValues, RecursivePartial } from "../locales/interfaces/values";
 export declare class SuiLocalizationService {
     private _language;
     private _fallbackValues;

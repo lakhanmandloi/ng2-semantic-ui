@@ -1,19 +1,20 @@
-import { AfterViewInit, EventEmitter, ElementRef, TemplateRef, Renderer2, OnDestroy } from "@angular/core";
-import { ITemplateRefContext } from "../../../misc/util/index";
-import { DropdownService } from "../../dropdown/index";
-import { ISearchLocaleValues, RecursivePartial, SuiLocalizationService } from "../../../behaviors/localization/index";
+import { AfterViewInit, EventEmitter, ElementRef, TemplateRef, Renderer2 } from "@angular/core";
+import { ITemplateRefContext, IFocusEvent } from "../../../misc/util/internal";
+import { DropdownService } from "../../dropdown/internal";
+import { ISearchLocaleValues, RecursivePartial, SuiLocalizationService } from "../../../behaviors/localization/internal";
 import { SearchService } from "../services/search.service";
 import { LookupFn, FilterFn } from "../helpers/lookup-fn";
 export interface IResultContext<T> extends ITemplateRefContext<T> {
     query: string;
 }
-export declare class SuiSearch<T> implements AfterViewInit, OnDestroy {
+export declare class SuiSearch<T> implements AfterViewInit {
     private _element;
     private _localizationService;
     dropdownService: DropdownService;
     searchService: SearchService<T, T>;
     private _menu;
-    private _searchClasses;
+    readonly hasClasses: boolean;
+    readonly tabindex: number;
     readonly isActive: boolean;
     hasIcon: boolean;
     private _placeholder;
@@ -38,16 +39,13 @@ export declare class SuiSearch<T> implements AfterViewInit, OnDestroy {
     onResultSelected: EventEmitter<T>;
     transition: string;
     transitionDuration: number;
-    private _documentClickListener;
     constructor(_element: ElementRef, renderer: Renderer2, _localizationService: SuiLocalizationService);
     ngAfterViewInit(): void;
     private onLocaleUpdate();
     select(result: T): void;
     onClick(e: MouseEvent): void;
-    private onFocusIn();
+    onFocusIn(): void;
     private open();
-    private onFocusOut(e);
-    onDocumentClick(e: MouseEvent): void;
+    onFocusOut(e: IFocusEvent): void;
     readValue(object: T): string;
-    ngOnDestroy(): void;
 }

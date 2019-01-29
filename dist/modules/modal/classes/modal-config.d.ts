@@ -16,6 +16,7 @@ export declare class ModalConfig<T, U = undefined, V = undefined> {
     isFullScreen: boolean;
     isBasic: boolean;
     isInverted: boolean;
+    isCentered: boolean;
     mustScroll: boolean;
     transition: string;
     transitionDuration: number;

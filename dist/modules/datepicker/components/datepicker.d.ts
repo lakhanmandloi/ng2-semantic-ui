@@ -1,5 +1,5 @@
 import { CalendarService } from "./../services/calendar.service";
-import { SuiLocalizationService } from "../../../behaviors/localization/index";
+import { SuiLocalizationService } from "../../../behaviors/localization/internal";
 export declare type DatepickerMode = "year" | "month" | "date" | "datetime" | "time";
 export declare const DatepickerMode: {
     Year: "time" | "year" | "month" | "date" | "datetime";
@@ -9,7 +9,7 @@ export declare const DatepickerMode: {
     Time: "time" | "year" | "month" | "date" | "datetime";
 };
 export declare class SuiDatepicker {
-    private _calendarClasses;
+    readonly hasClasses: boolean;
     service: CalendarService;
     constructor(localizationService: SuiLocalizationService);
     onMouseDown(e: MouseEvent): void;

@@ -1,1 +1,1 @@
-export { SuiTransitionModule, SuiTransition, Transition, TransitionDirection, TransitionController } from "./index";
+export { SuiTransitionModule, SuiTransition, Transition, TransitionDirection, TransitionController } from "./internal";

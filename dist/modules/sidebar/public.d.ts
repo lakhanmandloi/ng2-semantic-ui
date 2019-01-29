@@ -1,1 +1,1 @@
-export { SuiSidebarModule, SidebarDirection, SidebarTransition } from "./index";
+export { SuiSidebarModule, SidebarDirection, SidebarTransition } from "./internal";
